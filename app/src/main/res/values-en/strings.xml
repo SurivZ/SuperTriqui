@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ultimate\nTic Tac Toe</string>
+    <string name="coming_soon_title">COMING SOON</string>
+    <string name="coming_soon_message">This game mode is currently under development.\\nIt will be available in future updates</string>
+    <string name="coming_soon_instruction">Click to continue</string>
+
+    <string name="difficulty_selection_title">CHOOSE DIFFICULTY</string>
+    <string name="novice_title">Beginner</string>
+    <string name="novice_content">Machine understand basic game rules</string>
+    <string name="intermediate_title">Standard</string>
+    <string name="intermediate_content">Machine understand the basic mechanics and some more complex ones</string>
+    <string name="expert_title">Expert</string>
+    <string name="expert_content">Machine goes all out, its Magnus time</string>
+
+    <string name="game_mode_selection_title">CHOOSE A GAME MODE</string>
+    <string name="classic_title">Classic</string>
+    <string name="classic_content">"Traditional" Ultimate Tic Tac Toe game</string>
+    <string name="chaotic_title">Chaos</string>
+    <string name="chaotic_content">Fortune decides where you play each turn</string>
+    <string name="domination_title">Dominion</string>
+    <string name="domination_content">win he who has more squares</string>
+    <string name="no_ties_title">No Mercy</string>
+    <string name="no_ties_content">There are no draws, any board on draw shall be played again</string>
+    <string name="point_race_title">Score Race</string>
+    <string name="point_race_content">time its running out. he who has more victory boards overall wins</string>
+
+    <string name="player_x">X</string>
+    <string name="player_o">O</string>
+
+    <string name="go_back">Back</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <string name="play_now">Play Now!</string>
+    <string name="tutorial_indication">Complete the movement to continue</string>
+    <string name="_selected">Selected</string>
+    <string name="selecting">Selecting</string>
+    <string name="searching">Searching</string>
+    <string name="timer">Timer</string>
+    <string name="time">Time</string>
+    <string name="left_time">Left Time</string>
+    <string name="second_abbr">sec</string>
+    <string name="points">Points</string>
+    <string name="game_modes">Game Mode</string>
+    <string name="vs_machine">Against the machine</string>
+    <string name="game_rules">Game Rules</string>
+    <string name="player_wins">%1$s Won!</string>
+    <string name="game_tied">Tied Game!</string>
+    <string name="show_history">Show Record </string>
+    <string name="hide_history">Hide record</string>
+
+    <string name="confirm_surrender_title">Do you want to give up?</string>
+    <string name="confirm_surrender_message">¿Really Men?, don\'t be a bad looser.</string>
+    <string name="surrender_button">Give up</string>
+
+    <string name="offer_draw_title">Stalemate</string>
+    <string name="offer_draw_message">¿Want to give a Draw?</string>
+    <string name="offer_button">Yield</string>
+
+    <string name="draw_response_title">Draw given</string>
+    <string name="draw_response_message">Opponent offered to Draw. ¿Do you accept?</string>
+    <string name="accept_button">YES</string>
+    <string name="reject_button">NO</string>
+
+    <string name="game_result_title">Match Score</string>
+    <string name="new_game_button">New Game</string>
+    <string name="back_to_menu_button">Menu</string>
+
+    <string name="move_history_title">Moves Made</string>
+    <string name="move_number">#%1$d</string>
+    <string name="player_move">Player: %1$s</string>
+    <string name="board_position">Board: (%1$d,%2$d)</string>
+    <string name="cell_position">Square: (%1$d,%2$d)</string>
+
+    <string name="turn_indicator">Turn: %1$s</string>
+    <string name="winner_indicator">Winner: %1$s</string>
+    <string name="tie_indicator">Draw!</string>
+
+    <string name="board_won_description">board Won</string>
+    <string name="board_tied_description">board Draw</string>
+
+    <string name="classic_tutorial_title">Tutorial - Classic</string>
+    <string name="classic_tutorial_step1_title">Welcome to Mega Tick-Tack-Te</string>
+    <string name="classic_tutorial_step1_content">In a few steps you\'ll learn to play Ultimate Tic Tac Toe.</string>
+    <string name="classic_tutorial_step2_title">The board</string>
+    <string name="classic_tutorial_step2_content">There are 9 small boards (3x3) inside a big board.\n\nYou win if you line up 3 winning boards.</string>
+    <string name="classic_tutorial_step3_title">First Movement</string>
+    <string name="classic_tutorial_step3_content">you can start in any square of the board.\n\n For this example, select the upper right corner of the board.</string>
+    <string name="classic_tutorial_step4_title">Next Move</string>
+    <string name="classic_tutorial_step4_content">Your movement determines where your opponent can play\n\nCause you played on the upper right corner, your opponent must play on that board.</string>
+    <string name="classic_tutorial_step5_title">Blocked Boards</string>
+    <string name="classic_tutorial_step5_content">If a board its either fully occupied or won, the next player can choose any available board\n\n Example of a board won by X and a board in Draw </string>
+    <string name="classic_tutorial_step6_title">Basic Strategy</string>
+    <string name="classic_tutorial_step6_content">Control the central table and you\'ll control your opponent \n\nNow your ready to play!</string>
+
+    <string name="chaotic_tutorial_title">Tutorial - Chaos mode</string>
+    <string name="chaotic_tutorial_step1_title">Welcome to chaos mode</string>
+    <string name="chaotic_tutorial_step1_content">Learn the special rules of this chaotic and crazy mode</string>
+    <string name="chaotic_tutorial_step2_title">¿What is Chaos Mode?</string>
+    <string name="chaotic_tutorial_step2_content">The active board changes each turn.\n\nSo it\'ll be harder to predict your opponent\n\n Locked or Completed boards wont be selected</string>
+    <string name="chaotic_tutorial_step3_title">First Movement its free.</string>
+    <string name="chaotic_tutorial_step3_content">You can start at any square of the board\n\nSelect any square on the lower board to start</string>
+    <string name="chaotic_tutorial_step4_title">Randomly selected board</string>
+    <string name="chaotic_tutorial_step4_content">The game will randomly select the next active board\n\nLets look at how it works</string>
+    <string name="chaotic_tutorial_step5_title">Locked Boards</string>
+    <string name="chaotic_tutorial_step5_content">Locked or Complete Boards wont be selected \n\nExample, board won by X and stalemate board </string>
+    <string name="chaotic_tutorial_step6_title">Strategy for chaos</string>
+    <string name="chaotic_tutorial_step6_content">You must adapt constantly to available tables\n\nLuck and Flexibility are key to success !</string>
+
+    <string name="domination_tutorial_title">Tutorial - Dominion</string>
+    <string name="domination_step1_title">Welcome to Dominion</string>
+    <string name="domination_step1_content">You win by controlling the most of the small boards.</string>
+    <string name="domination_step2_title">Principal Objective</string>
+    <string name="domination_step2_content">Each won board gives you 1 point\n\nYou win when:\n• Control over 5 Boards\n• Have the most boards when all boards lock</string>
+    <string name="domination_step3_title">Hitting a tick-tack-toe</string>
+    <string name="domination_step3_content">When you win a small board you gain control over that board\n\nComplete a horizontal TTT by selecting the empty square</string>
+    <string name="domination_step4_title">Map control</string>
+    <string name="domination_step4_content">the boards taken by you show your respective symbol (X/O).\n\nExample of boards taken by both players:</string>
+    <string name="domination_step5_title">locked boards</string>
+    <string name="domination_step5_content">locked boards don\'t give points\n\nExample of won boards and stalemate boards</string>
+    <string name="domination_step6_title">Strategy of Dominion</string>
+    <string name="domination_step6_content">try to take the middle first.\n\nProtect your boards and attack the opponent week ones\n\nNow you\'re ready to domain!</string>
+
+    <string name="no_ties_tutorial_title">Tutorial - No Mercy</string>
+    <string name="no_ties_step1_title">Welcome to No Mercy</string>
+    <string name="no_ties_step1_content">stalemates don\'t exist on this mode! locked boards will restart.</string>
+    <string name="no_ties_step2_title"> Main Rule</string>
+    <string name="no_ties_step2_content">when a small board end up on stalemate\n1. it will empty itself\n2. and you can play again on it\n3. Only taken boards will not restart</string>
+    <string name="no_ties_step3_title"> Create a Tie</string>
+    <string name="no_ties_step3_content">To Demostrate Let\'s create a Tie Board</string>
+    <string name="no_ties_tie_detected">Tie Detected! (Tablero lleno sin ganador)</string>
+    <string name="no_ties_no_tie">Let\'s tie off this Tie (click on the lower right corner)</string>
+    <string name="no_ties_step4_title">Board Reset</string>
+    <string name="no_ties_step4_content">Now the Tie board will reset itself</string>
+    <string name="no_ties_info">Reseted Board - Ready to try again</string>
+    <string name="no_ties_step5_title">Key Strategie</string>
+    <string name="no_ties_step5_content">Try to avoid stalemates\n\nTry to force early victories </string>
+    <string name="no_ties_step6_title">Continuous game</string>
+    <string name="no_ties_step6_content">More opportunities to change the tides!\n\nNo Ties no Locked boards</string>
+
+    <string name="point_race_tutorial_title">Tutorial - Point Races</string>
+    <string name="point_race_step1_title">Welcome to Point Race</string>
+    <string name="point_race_step1_content">Win by gathering the most points before time runs out!</string>
+    <string name="point_race_step2_title">Timer</string>
+    <string name="point_race_step2_content">each game has a limited time (5, 10 o 15 minutes).\n\nThe timer its visible during the whole game.</string>
+    <string name="point_race_step3_title">Win tables</string>
+    <string name="point_race_step3_content">Each time you win an small board you will gain a point and the board will reset.\n\nComplete the ttt on the central board to continue.</string>
+    <string name="point_race_no_action">Complete the ttt on the central board (click on the top right corner)</string>
+    <string name="point_race_action_detected">Well done! You have won 1 point. Continue to the next step</string>
+    <string name="point_race_step4_title">Self Restart</string>
+    <string name="point_race_step4_content">.Won or tied boards will automatically reset instantly \n\nYou can win the same board multiple times!</string>
+    <string name="point_race_step5_title">Timer Strategy</string>
+    <string name="point_race_step5_content">Play aggressive and try not to tie.\n\nFocus on easily winnable boards .</string>
+    <string name="point_race_step6_title">End of the Game</string>
+    <string name="point_race_step6_content">when time runs out thr player with most points wins\n\nEach second counts!</string>
+</resources>

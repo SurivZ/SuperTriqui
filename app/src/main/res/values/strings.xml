@@ -1,0 +1,157 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Super Triqui</string>
+
+    <string name="coming_soon_title">PRÓXIMAMENTE</string>
+    <string name="coming_soon_message">Este modo de juego está en desarrollo.\nEstará disponible en una próxima actualización</string>
+    <string name="coming_soon_instruction">Toca fuera para continuar</string>
+
+    <string name="difficulty_selection_title">SELECCIONA LA DIFICULTAD</string>
+    <string name="novice_title">Novato</string>
+    <string name="novice_content">La máquina comprende las reglas básicas del juego.</string>
+    <string name="intermediate_title">Intermedio</string>
+    <string name="intermediate_content">La máquina comprende mejor el juego y tiene un buen desempeño.</string>
+    <string name="expert_title">Experto</string>
+    <string name="expert_content">La máquina domina estrategias más avanzadas.</string>
+
+    <string name="game_mode_selection_title">SELECCIONA UN MODO DE JUEGO</string>
+    <string name="classic_title">Clásico</string>
+    <string name="classic_content">El modo normal de Super Triqui</string>
+    <string name="chaotic_title">Caótico</string>
+    <string name="chaotic_content">El azar decide dónde juegas</string>
+    <string name="domination_title">Dominio del Mapa</string>
+    <string name="domination_content">Gana quien consiga más terreno</string>
+    <string name="no_ties_title">Sin Empates</string>
+    <string name="no_ties_content">Los tableros empatados se reinician</string>
+    <string name="point_race_title">Carrera de Puntos</string>
+    <string name="point_race_content">Gana quien consiga más triquis</string>
+
+    <string name="player_x">X</string>
+    <string name="player_o">O</string>
+
+    <string name="go_back">Volver</string>
+    <string name="previous">Anterior</string>
+    <string name="next">Siguiente</string>
+    <string name="play_now">¡Jugar Ahora!</string>
+    <string name="tutorial_indication">Completa el movimiento para continuar</string>
+    <string name="_selected">Seleccionado</string>
+    <string name="selecting">Seleccionando</string>
+    <string name="searching">Buscando</string>
+    <string name="timer">Temporizador</string>
+    <string name="time">Tiempo</string>
+    <string name="left_time">Tiempo restante</string>
+    <string name="second_abbr">seg</string>
+    <string name="points">Puntos</string>
+    <string name="game_modes">MODOS DE JUEGO</string>
+    <string name="vs_machine">CONTRA LA MÁQUINA</string>
+    <string name="game_rules">Reglas del juego</string>
+    <string name="player_wins">¡%1$s ha ganado!</string>
+    <string name="game_tied">¡El juego terminó en empate!</string>
+    <string name="show_history">Mostrar historial</string>
+    <string name="hide_history">Ocultar historial</string>
+
+    <string name="confirm_surrender_title">Confirmar Rendición</string>
+    <string name="confirm_surrender_message">¿Estás seguro de que quieres rendirte? Esto le dará la victoria a tu oponente.</string>
+    <string name="surrender_button">Rendirse</string>
+
+    <string name="offer_draw_title">Ofrecer Empate</string>
+    <string name="offer_draw_message">¿Quieres ofrecer un empate a tu oponente?</string>
+    <string name="offer_button">Ofrecer</string>
+
+    <string name="draw_response_title">Empate Ofrecido</string>
+    <string name="draw_response_message">Tu oponente ha ofrecido un empate. ¿Aceptas?</string>
+    <string name="accept_button">Aceptar</string>
+    <string name="reject_button">Rechazar</string>
+
+    <string name="game_result_title">Resultado del Juego</string>
+    <string name="new_game_button">Nuevo Juego</string>
+    <string name="back_to_menu_button">Volver al Menú</string>
+
+    <string name="move_history_title">Historial de Movimientos</string>
+    <string name="move_number">#%1$d</string>
+    <string name="player_move">Jugador: %1$s</string>
+    <string name="board_position">Tablero: (%1$d,%2$d)</string>
+    <string name="cell_position">Casilla: (%1$d,%2$d)</string>
+
+    <string name="turn_indicator">Turno: %1$s</string>
+    <string name="winner_indicator">Ganador: %1$s</string>
+    <string name="tie_indicator">¡Empate!</string>
+
+    <string name="board_won_description">Ganó tablero</string>
+    <string name="board_tied_description">Empate en tablero</string>
+
+    <string name="classic_tutorial_title">Tutorial - Modo Clásico</string>
+    <string name="classic_tutorial_step1_title">Bienvenido a Super Triqui</string>
+    <string name="classic_tutorial_step1_content">Aprenderás a jugar Super Triqui en simples pasos.</string>
+    <string name="classic_tutorial_step2_title">El Tablero</string>
+    <string name="classic_tutorial_step2_content">Hay 9 tableros pequeños (3x3) dentro de uno grande.\n\nGanas al alinear 3 tableros pequeños ganados.</string>
+    <string name="classic_tutorial_step3_title">Primer Movimiento</string>
+    <string name="classic_tutorial_step3_content">Puedes empezar en cualquier casilla de cualquier tablero.\n\nPara este ejemplo, toca la esquina superior derecha del tablero.</string>
+    <string name="classic_tutorial_step4_title">Siguiente Movimiento</string>
+    <string name="classic_tutorial_step4_content">Tu movimiento determina dónde jugará el oponente.\n\nComo jugaste en la esquina superior derecha, el oponente DEBE jugar en el tablero superior derecho.</string>
+    <string name="classic_tutorial_step5_title">Tableros Bloqueados</string>
+    <string name="classic_tutorial_step5_content">Si un tablero está completo (empate) o ganado, el siguiente jugador puede elegir cualquier tablero disponible.\n\nEjemplo de tablero ganado por X y tablero empatado:</string>
+    <string name="classic_tutorial_step6_title">Estrategia Básica</string>
+    <string name="classic_tutorial_step6_content">Controla el tablero central y dirige a tu oponente.\n\n¡Ahora estás listo para jugar!</string>
+
+    <string name="chaotic_tutorial_title">Tutorial - Modo Caótico</string>
+    <string name="chaotic_tutorial_step1_title">Bienvenido al Modo Caótico</string>
+    <string name="chaotic_tutorial_step1_content">Aprende las reglas especiales de este modo aleatorio y emocionante.</string>
+    <string name="chaotic_tutorial_step2_title">¿Qué es el Modo Caótico?</string>
+    <string name="chaotic_tutorial_step2_content">El tablero activo cambia aleatoriamente cada turno.\n\nNo puedes predecir dónde jugará tu oponente.\n\nLos tableros bloqueados se excluyen de la selección.</string>
+    <string name="chaotic_tutorial_step3_title">Primer Movimiento Libre</string>
+    <string name="chaotic_tutorial_step3_content">Puedes empezar en cualquier casilla de cualquier tablero.\n\nToca cualquier casilla del tablero de abajo para practicar.</string>
+    <string name="chaotic_tutorial_step4_title">Selección Aleatoria de Tablero</string>
+    <string name="chaotic_tutorial_step4_content">El juego seleccionará aleatoriamente el próximo tablero activo.\n\nObserva cómo funciona la selección automática:</string>
+    <string name="chaotic_tutorial_step5_title">Tableros Bloqueados</string>
+    <string name="chaotic_tutorial_step5_content">Los tableros ganados o completos se excluyen de la selección aleatoria.\n\nEjemplo de tablero ganado por X y tablero empatado:</string>
+    <string name="chaotic_tutorial_step6_title">Estrategia Caótica</string>
+    <string name="chaotic_tutorial_step6_content">Debes adaptarte constantemente a los tableros disponibles.\n\n¡La suerte y la flexibilidad son clave en este modo!</string>
+
+    <string name="domination_tutorial_title">Tutorial - Dominio del Mapa</string>
+    <string name="domination_step1_title">Bienvenido al Dominio del Mapa</string>
+    <string name="domination_step1_content">Gana controlando la mayoría de los tableros pequeños.</string>
+    <string name="domination_step2_title">Objetivo Principal</string>
+    <string name="domination_step2_content">Cada tablero ganado suma 1 punto.\n\nGanas cuando:\n• Controlas 5+ tableros\n• Tienes más tableros cuando todos están bloqueados</string>
+    <string name="domination_step3_title">Completar un Triqui</string>
+    <string name="domination_step3_content">Ganar un triqui en un tablero pequeño te da control sobre ese tablero.\n\nCompleta un triqui horizontal tocando la casilla vacía:</string>
+    <string name="domination_step4_title">Control del Mapa</string>
+    <string name="domination_step4_content">Los tableros capturados muestran tu símbolo (X/O).\n\nEjemplo de tableros controlados por ambos jugadores:</string>
+    <string name="domination_step5_title">Tableros Bloqueados</string>
+    <string name="domination_step5_content">Los tableros empatados no suman puntos.\n\nEjemplo de tablero ganado y tablero empatado:</string>
+    <string name="domination_step6_title">Estrategia de Dominio</string>
+    <string name="domination_step6_content">Controla el centro primero.\n\nProtege tus tableros y ataca los débiles del oponente.\n\n¡Ahora estás listo para dominar!</string>
+
+    <string name="no_ties_tutorial_title">Tutorial - Sin Empates</string>
+    <string name="no_ties_step1_title">Bienvenido a Sin Empates</string>
+    <string name="no_ties_step1_content">¡Los empates no existen en este modo! Los tableros empatados se reinician.</string>
+    <string name="no_ties_step2_title">Regla Principal</string>
+    <string name="no_ties_step2_content">Cuando un mini-tablero queda empatado:\n1. Se vacía completamente\n2. Puedes volver a jugar en él\n3. Solo los tableros ganados permanecen bloqueados</string>
+    <string name="no_ties_step3_title">Crear un Empate</string>
+    <string name="no_ties_step3_content">Practiquemos creando un empate en un tablero.</string>
+    <string name="no_ties_tie_detected">¡Empate detectado! (Tablero lleno sin ganador)</string>
+    <string name="no_ties_no_tie">Completa el empate (haz clic en la esquina inferior derecha)</string>
+    <string name="no_ties_step4_title">Reinicio del Tablero</string>
+    <string name="no_ties_step4_content">Ahora el tablero empatado se reinicia completamente.</string>
+    <string name="no_ties_info">Tablero reiniciado - listo para nueva partida</string>
+    <string name="no_ties_step5_title">Estrategia Clave</string>
+    <string name="no_ties_step5_content">Evita jugadas que puedan llevar a empates.\n\nBusca forzar victorias claras en los mini-tableros.</string>
+    <string name="no_ties_step6_title">Juego Continuo</string>
+    <string name="no_ties_step6_content">¡Más oportunidades para cambiar el curso del juego!\n\nSin empates que bloqueen tableros permanentemente.</string>
+
+    <string name="point_race_tutorial_title">Tutorial - Carrera de Puntos</string>
+    <string name="point_race_step1_title">Bienvenido a Carrera de Puntos</string>
+    <string name="point_race_step1_content">¡Gana acumulando la mayor cantidad de puntos antes de que se acabe el tiempo!</string>
+    <string name="point_race_step2_title">Temporizador</string>
+    <string name="point_race_step2_content">Cada partida tiene un tiempo límite (5, 10 o 15 minutos).\n\nEl temporizador es visible durante toda la partida.</string>
+    <string name="point_race_step3_title">Ganar Tableros</string>
+    <string name="point_race_step3_content" tools:ignore="Typos">Cada vez que ganes un mini-tablero, sumarás 1 punto y el tablero se reiniciará.\n\nCompleta el triqui en el tablero central para practicar.</string>
+    <string name="point_race_no_action">Completa el triqui en el tablero central (haz clic en la esquina superior derecha)</string>
+    <string name="point_race_action_detected">¡Bien hecho! Has ganado 1 punto. Continúa al siguiente paso</string>
+    <string name="point_race_step4_title">Reinicio Automático</string>
+    <string name="point_race_step4_content">Los tableros ganados o empatados se reinician inmediatamente.\n\n¡Puedes ganar el mismo tablero múltiples veces!</string>
+    <string name="point_race_step5_title">Estrategia Rápida</string>
+    <string name="point_race_step5_content">Juega agresivamente y evita empates (no dan puntos).\n\nEnfócate en tableros fáciles de ganar rápidamente.</string>
+    <string name="point_race_step6_title">Fin del Juego</string>
+    <string name="point_race_step6_content">Cuando el tiempo se acaba, gana el jugador con más puntos.\n\n¡Cada segundo cuenta!</string>
+
+</resources>
