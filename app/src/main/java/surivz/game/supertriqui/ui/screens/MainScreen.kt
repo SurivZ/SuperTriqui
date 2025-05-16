@@ -114,7 +114,7 @@ fun MainScreen(
                     showClassicOption = false
                     showGameModeSelectionDialog = false
                 },
-                onVariantSelected = { mode ->
+                onGameModeSelected = { mode ->
                     showGameModeSelectionDialog = false
                     onNavigateToGameMode(mode, showClassicOption, selectedDifficulty)
                 },

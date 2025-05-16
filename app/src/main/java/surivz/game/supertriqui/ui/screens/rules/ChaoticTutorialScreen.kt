@@ -203,8 +203,10 @@ fun ChaoticTutorialScreen(
                 }
             } else {
                 Button(
-                    onClick = { onComplete("Caótico") }, colors = ButtonDefaults.buttonColors(
-                        containerColor = Color.Green, contentColor = Color.White
+                    onClick = { onComplete("chaotic") },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color.Green,
+                        contentColor = Color.White
                     )
                 ) {
                     Text(context.getString(R.string.play_now))

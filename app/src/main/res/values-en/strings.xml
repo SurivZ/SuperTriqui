@@ -22,7 +22,7 @@
     <string name="domination_content">win he who has more squares</string>
     <string name="no_ties_title">No Mercy</string>
     <string name="no_ties_content">There are no draws, any board on draw shall be played again</string>
-    <string name="point_race_title">Score Race</string>
+    <string name="point_race_title">Points Race</string>
     <string name="point_race_content">time its running out. he who has more victory boards overall wins</string>
 
     <string name="player_x">X</string>
@@ -62,6 +62,7 @@
     <string name="accept_button">YES</string>
     <string name="reject_button">NO</string>
 
+    <string name="consent_content">Do you agree that we send anonymous usage data to improve the game?</string>
     <string name="game_result_title">Match Score</string>
     <string name="new_game_button">New Game</string>
     <string name="back_to_menu_button">Menu</string>
@@ -138,8 +139,8 @@
     <string name="no_ties_step6_title">Continuous game</string>
     <string name="no_ties_step6_content">More opportunities to change the tides!\n\nNo Ties no Locked boards</string>
 
-    <string name="point_race_tutorial_title">Tutorial - Point Races</string>
-    <string name="point_race_step1_title">Welcome to Point Race</string>
+    <string name="point_race_tutorial_title">Tutorial - Points Races</string>
+    <string name="point_race_step1_title">Welcome to Points Race</string>
     <string name="point_race_step1_content">Win by gathering the most points before time runs out!</string>
     <string name="point_race_step2_title">Timer</string>
     <string name="point_race_step2_content">each game has a limited time (5, 10 o 15 minutes).\n\nThe timer its visible during the whole game.</string>
@@ -153,4 +154,5 @@
     <string name="point_race_step5_content">Play aggressive and try not to tie.\n\nFocus on easily winnable boards .</string>
     <string name="point_race_step6_title">End of the Game</string>
     <string name="point_race_step6_content">when time runs out thr player with most points wins\n\nEach second counts!</string>
+    <string name="consent_title">Send usage data</string>
 </resources>

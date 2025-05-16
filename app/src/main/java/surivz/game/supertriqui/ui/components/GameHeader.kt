@@ -25,9 +25,10 @@ import surivz.game.supertriqui.R
 fun GameHeader(
     onBack: () -> Unit,
     onSurrender: () -> Unit,
-    onDraw: () -> Unit,
     modifier: Modifier = Modifier,
-    vsAI: Boolean = false
+    allowDraw: Boolean = true,
+    onDraw: () -> Unit = {},
+    vsAI: Boolean = false,
 ) {
     val context = LocalContext.current
 
@@ -48,7 +49,7 @@ fun GameHeader(
         }
 
         Row {
-            if (!vsAI) {
+            if (!vsAI && allowDraw) {
                 IconButton(onClick = onDraw) {
                     Icon(
                         imageVector = Icons.Default.Handshake,

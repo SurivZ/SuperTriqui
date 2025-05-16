@@ -1,7 +1,9 @@
 package surivz.game.supertriqui.ui.dialog
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -83,23 +85,23 @@ fun GameResultDialog(
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                Button(
-                    onClick = onNewGame, modifier = Modifier.fillMaxWidth()
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                    modifier = Modifier.fillMaxWidth()
                 ) {
-                    Text(context.getString(R.string.new_game_button))
-                }
+                    Button(
+                        onClick = onNewGame,
+                        modifier = Modifier.weight(1f)
+                    ) { Text(context.getString(R.string.new_game_button)) }
 
-                Spacer(modifier = Modifier.height(8.dp))
-
-                Button(
-                    onClick = { onBackToMenu() },
-                    modifier = Modifier.fillMaxWidth(),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color.White.copy(alpha = 0.2f),
-                        contentColor = Color.White
-                    )
-                ) {
-                    Text(context.getString(R.string.back_to_menu_button))
+                    Button(
+                        onClick = { onBackToMenu() },
+                        modifier = Modifier.weight(1f),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color.White.copy(alpha = 0.2f),
+                            contentColor = Color.White
+                        )
+                    ) { Text(context.getString(R.string.back_to_menu_button)) }
                 }
             }
         }

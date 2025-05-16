@@ -112,7 +112,7 @@ fun RulesSelectionDialog(
                         description = context.getString(R.string.no_ties_content),
                         onClick = {
                             onDismiss()
-                            navController.navigate(Routes.NoTiesTutorial.route)
+                            navController.navigate(Routes.NoMercyTutorial.route)
                         }
                     )
 
@@ -124,7 +124,7 @@ fun RulesSelectionDialog(
                         description = context.getString(R.string.point_race_content),
                         onClick = {
                             onDismiss()
-                            navController.navigate(Routes.PointRaceTutorial.route)
+                            navController.navigate(Routes.PointsRaceTutorial.route)
                         }
                     )
                 }

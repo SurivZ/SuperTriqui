@@ -204,7 +204,7 @@ fun DominationTutorialScreen(
                     }
                 } else {
                     Button(
-                        onClick = { onComplete("Dominio") },
+                        onClick = { onComplete("domination") },
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Color.Green,
                             contentColor = Color.White

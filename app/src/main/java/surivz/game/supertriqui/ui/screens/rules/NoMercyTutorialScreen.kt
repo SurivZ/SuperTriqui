@@ -58,7 +58,7 @@ import surivz.game.supertriqui.ui.theme.GradientEnd
 import surivz.game.supertriqui.ui.theme.GradientStart
 
 @Composable
-fun NoTiesTutorialScreen(
+fun NoMercyTutorialScreen(
     onBackToSelection: () -> Unit,
     onComplete: (String) -> Unit
 ) {
@@ -204,7 +204,7 @@ fun NoTiesTutorialScreen(
                     }
                 } else {
                     Button(
-                        onClick = { onComplete("Sin Empates") },
+                        onClick = { onComplete("no_mercy") },
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Color.Green,
                             contentColor = Color.White

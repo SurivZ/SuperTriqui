@@ -36,7 +36,7 @@ import surivz.game.supertriqui.ui.theme.GradientStart
 @Composable
 fun GameModeSelectionDialog(
     onDismiss: () -> Unit,
-    onVariantSelected: (String) -> Unit,
+    onGameModeSelected: (String) -> Unit,
     showClassicOption: Boolean = false,
 ) {
     val context = LocalContext.current
@@ -74,7 +74,7 @@ fun GameModeSelectionDialog(
                             icon = Icons.Default.Group,
                             text = context.getString(R.string.classic_title),
                             description = context.getString(R.string.classic_content),
-                            onClick = { onVariantSelected("classic") }
+                            onClick = { onGameModeSelected("classic") }
                         )
 
                         Spacer(modifier = Modifier.Companion.height(12.dp))
@@ -84,7 +84,7 @@ fun GameModeSelectionDialog(
                         icon = Icons.Default.Shuffle,
                         text = context.getString(R.string.chaotic_title),
                         description = context.getString(R.string.chaotic_content),
-                        onClick = { onVariantSelected("chaotic") }
+                        onClick = { onGameModeSelected("chaotic") }
                     )
 
                     Spacer(modifier = Modifier.Companion.height(12.dp))
@@ -93,7 +93,7 @@ fun GameModeSelectionDialog(
                         icon = Icons.Default.Map,
                         text = context.getString(R.string.domination_title),
                         description = context.getString(R.string.domination_content),
-                        onClick = { onVariantSelected("domination") }
+                        onClick = { onGameModeSelected("domination") }
                     )
 
                     Spacer(modifier = Modifier.Companion.height(12.dp))
@@ -102,7 +102,7 @@ fun GameModeSelectionDialog(
                         icon = Icons.Default.Block,
                         text = context.getString(R.string.no_ties_title),
                         description = context.getString(R.string.no_ties_content),
-                        onClick = { onVariantSelected("no_ties") }
+                        onClick = { onGameModeSelected("no_mercy") }
                     )
 
                     Spacer(modifier = Modifier.Companion.height(12.dp))
@@ -111,7 +111,7 @@ fun GameModeSelectionDialog(
                         icon = Icons.Default.Timer,
                         text = context.getString(R.string.point_race_title),
                         description = context.getString(R.string.point_race_content),
-                        onClick = { onVariantSelected("point_race") }
+                        onClick = { onGameModeSelected("point_race") }
                     )
                 }
             }

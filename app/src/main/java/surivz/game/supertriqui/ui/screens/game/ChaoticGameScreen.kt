@@ -15,7 +15,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import surivz.game.supertriqui.AILevel
 import surivz.game.supertriqui.AIPlayer
 import surivz.game.supertriqui.R
@@ -24,6 +27,8 @@ import surivz.game.supertriqui.logic.MoveRecord
 import surivz.game.supertriqui.logic.Player
 import surivz.game.supertriqui.logic.SmallBoardState
 import surivz.game.supertriqui.logic.opponent
+import surivz.game.supertriqui.telemetry.TelemetryEvent
+import surivz.game.supertriqui.telemetry.TelemetryManager
 import surivz.game.supertriqui.ui.components.GameBackground
 import surivz.game.supertriqui.ui.components.GameContent
 import surivz.game.supertriqui.ui.components.GameHeader
@@ -35,9 +40,12 @@ import surivz.game.supertriqui.ui.dialog.GameResultDialog
 fun ChaoticGameScreen(
     onBackToMain: () -> Unit,
     vsAI: Boolean = false,
-    aiLevel: AILevel = AILevel.NOVICE
+    aiLevel: AILevel = AILevel.NOVICE,
+    telemetryAllowed: Boolean = false
 ) {
     val context = LocalContext.current
+    val startTime = remember { System.currentTimeMillis() }
+    val telemetryManager = remember { TelemetryManager(context) }
 
     GameBackground(canvas = false)
 
@@ -51,10 +59,33 @@ fun ChaoticGameScreen(
     val aiPlayer by remember { mutableStateOf(AIPlayer(aiLevel)) }
     var isAITurn by remember { mutableStateOf(false) }
 
+
     fun handleGameEnd(message: String) {
         gameResultMessage = message
         showGameResultDialog = true
         isAITurn = false
+
+        val duration = System.currentTimeMillis() - startTime
+        val result = when (gameState.winner) {
+            Player.X -> "X"
+            Player.O -> "O"
+            else -> "draw"
+        }
+
+        if (telemetryAllowed) {
+            CoroutineScope(Dispatchers.IO).launch {
+                telemetryManager.logEvent(
+                    TelemetryEvent(
+                        mode = "chaotic",
+                        vsAI = vsAI,
+                        aiLevel = if (vsAI) aiLevel.name else null,
+                        result = result,
+                        durationMillis = duration,
+                        moveCount = gameState.moveHistory.size
+                    )
+                )
+            }
+        }
     }
 
     fun resetGame() {
@@ -66,9 +97,7 @@ fun ChaoticGameScreen(
     fun onCellClick(boardIndex: Int, cellIndex: Int) {
         if (gameState.isGameOver()) return
 
-        if (gameState.moveHistory.isNotEmpty() &&
-            (gameState.nextBoard != -1 && gameState.nextBoard != boardIndex)
-        ) return
+        if (gameState.moveHistory.isNotEmpty() && (gameState.nextBoard != -1 && gameState.nextBoard != boardIndex)) return
         if (gameState.boards[boardIndex].isFinished()) return
 
         val newState = gameState.makeMove(boardIndex, cellIndex)
@@ -78,8 +107,7 @@ fun ChaoticGameScreen(
             handleGameEnd(
                 when {
                     newState.winner != null -> context.getString(
-                        R.string.player_wins,
-                        newState.winner
+                        R.string.player_wins, newState.winner
                     )
 
                     else -> context.getString(R.string.game_tied)
@@ -104,8 +132,7 @@ fun ChaoticGameScreen(
                     handleGameEnd(
                         when {
                             newState.winner != null -> context.getString(
-                                R.string.player_wins,
-                                newState.winner
+                                R.string.player_wins, newState.winner
                             )
 
                             else -> context.getString(R.string.game_tied)
@@ -194,8 +221,7 @@ fun ChaoticGameScreen(
                 onBackToMenu = {
                     resetGame()
                     onBackToMain()
-                }
-            )
+                })
         }
     }
 }

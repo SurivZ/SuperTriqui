@@ -58,7 +58,7 @@ import surivz.game.supertriqui.ui.theme.GradientEnd
 import surivz.game.supertriqui.ui.theme.GradientStart
 
 @Composable
-fun PointRaceTutorialScreen(
+fun PointsRaceTutorialScreen(
     onBackToSelection: () -> Unit,
     onComplete: (String) -> Unit
 ) {
@@ -224,7 +224,7 @@ fun PointRaceTutorialScreen(
                     }
                 } else {
                     Button(
-                        onClick = { onComplete("Carrera de Puntos") },
+                        onClick = { onComplete("points_race") },
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Color.Green,
                             contentColor = Color.White

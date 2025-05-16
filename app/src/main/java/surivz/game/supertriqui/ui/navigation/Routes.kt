@@ -6,8 +6,8 @@ sealed class Routes(val route: String) {
     data object ClassicTutorial : Routes("classic_tutorial")
     data object ChaoticTutorial : Routes("chaotic_tutorial")
     data object DominationTutorial : Routes("domination_tutorial")
-    data object NoTiesTutorial : Routes("no_ties_tutorial")
-    data object PointRaceTutorial : Routes("point_race_tutorial")
+    data object NoMercyTutorial : Routes("no_mercy_tutorial")
+    data object PointsRaceTutorial : Routes("points_race_tutorial")
 
     data object ClassicGame : Routes("classic_game")
     data object ChaoticGame : Routes("chaotic_game")

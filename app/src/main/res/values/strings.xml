@@ -62,6 +62,9 @@
     <string name="accept_button">Aceptar</string>
     <string name="reject_button">Rechazar</string>
 
+    <string name="consent_title">Enviar datos de uso</string>
+    <string name="consent_content">¿Aceptas que enviemos datos anónimos de uso para mejorar el juego?</string>
+
     <string name="game_result_title">Resultado del Juego</string>
     <string name="new_game_button">Nuevo Juego</string>
     <string name="back_to_menu_button">Volver al Menú</string>

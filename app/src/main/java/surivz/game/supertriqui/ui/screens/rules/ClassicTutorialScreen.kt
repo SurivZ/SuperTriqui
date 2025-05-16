@@ -226,7 +226,7 @@ fun ClassicTutorialScreen(
                     ) { Text(context.getString(R.string.next)) }
                 } else {
                     Button(
-                        onClick = { onComplete("Clásico") },
+                        onClick = { onComplete("classic") },
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Color.Green,
                             contentColor = Color.White

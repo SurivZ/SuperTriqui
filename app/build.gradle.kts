@@ -4,15 +4,19 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.1.21"
 }
 
 android {
     namespace = "surivz.game.supertriqui"
     compileSdk = 35
 
-    @Suppress("UnstableApiUsage")
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.androidx.compose.compiler.get()
+    }
+
+    val localProperties = Properties().apply {
+        load(File(rootProject.rootDir, "local.properties").inputStream())
     }
 
     defaultConfig {
@@ -23,10 +27,6 @@ android {
         versionName = "0.1.0-beta"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    val localProperties = Properties().apply {
-        load(File(rootProject.rootDir, "local.properties").inputStream())
     }
 
     signingConfigs {
@@ -64,6 +64,8 @@ android {
 dependencies {
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.androidx.navigation.compose)
+
+    implementation(libs.kotlinx.serialization.json)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
