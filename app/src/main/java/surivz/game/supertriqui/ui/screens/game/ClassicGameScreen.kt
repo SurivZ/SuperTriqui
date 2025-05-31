@@ -27,14 +27,15 @@ import surivz.game.supertriqui.logic.MoveRecord
 import surivz.game.supertriqui.logic.Player
 import surivz.game.supertriqui.logic.SmallBoardState
 import surivz.game.supertriqui.logic.opponent
-import surivz.game.supertriqui.telemetry.TelemetryEvent
+import surivz.game.supertriqui.telemetry.Game
 import surivz.game.supertriqui.telemetry.TelemetryManager
 import surivz.game.supertriqui.ui.components.GameBackground
 import surivz.game.supertriqui.ui.components.GameContent
 import surivz.game.supertriqui.ui.components.GameHeader
 import surivz.game.supertriqui.ui.components.MoveHistory
-import surivz.game.supertriqui.ui.dialog.GameDialog
-import surivz.game.supertriqui.ui.dialog.GameResultDialog
+import surivz.game.supertriqui.ui.dialogs.GameDialog
+import surivz.game.supertriqui.ui.dialogs.GameResultDialog
+import surivz.game.supertriqui.telemetry.MoveRecord as TelemetryMoveRecord
 
 @Composable
 fun ClassicGameScreen(
@@ -74,13 +75,23 @@ fun ClassicGameScreen(
         if (telemetryAllowed) {
             CoroutineScope(Dispatchers.IO).launch {
                 telemetryManager.logEvent(
-                    TelemetryEvent(
+                    Game(
                         mode = "classic",
                         vsAI = vsAI,
                         aiLevel = if (vsAI) aiLevel.name else null,
                         result = result,
                         durationMillis = duration,
-                        moveCount = gameState.moveHistory.size
+                        moveCount = gameState.moveHistory.size,
+                        moves = gameState.moveHistory.map { move ->
+                            TelemetryMoveRecord(
+                                moveNumber = move.moveNumber,
+                                player = move.player.toString(),
+                                boardIndex = move.boardIndex,
+                                cellIndex = move.cellIndex,
+                                resultedInBoardWin = move.resultedInBoardWin,
+                                resultedInBoardDraw = move.resultedInBoardDraw
+                            )
+                        }
                     )
                 )
             }

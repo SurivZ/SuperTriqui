@@ -1,4 +1,4 @@
-package surivz.game.supertriqui.ui.dialog
+package surivz.game.supertriqui.ui.dialogs
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -9,11 +9,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Block
-import androidx.compose.material.icons.filled.Group
-import androidx.compose.material.icons.filled.Map
-import androidx.compose.material.icons.filled.Shuffle
-import androidx.compose.material.icons.filled.Timer
+import androidx.compose.material.icons.filled.Equalizer
+import androidx.compose.material.icons.filled.School
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -28,17 +26,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import androidx.navigation.NavController
 import surivz.game.supertriqui.R
 import surivz.game.supertriqui.ui.components.CustomButton
-import surivz.game.supertriqui.ui.navigation.Routes
 import surivz.game.supertriqui.ui.theme.GradientEnd
 import surivz.game.supertriqui.ui.theme.GradientStart
 
 @Composable
-fun RulesSelectionDialog(
-    navController: NavController,
-    onDismiss: () -> Unit
+fun DifficultySelectionDialog(
+    onDismiss: () -> Unit,
+    onDifficultySelected: (String) -> Unit
 ) {
     val context = LocalContext.current
 
@@ -63,7 +59,7 @@ fun RulesSelectionDialog(
                     horizontalAlignment = Alignment.Companion.CenterHorizontally
                 ) {
                     Text(
-                        text = context.getString(R.string.game_mode_selection_title),
+                        text = context.getString(R.string.difficulty_selection_title),
                         style = MaterialTheme.typography.headlineSmall.copy(textAlign = TextAlign.Center),
                         color = Color.Companion.White,
                         fontWeight = FontWeight.Companion.Bold,
@@ -71,61 +67,28 @@ fun RulesSelectionDialog(
                     )
 
                     CustomButton(
-                        icon = Icons.Default.Group,
-                        text = context.getString(R.string.classic_title),
-                        description = context.getString(R.string.classic_content),
-                        onClick = {
-                            onDismiss()
-                            navController.navigate(Routes.ClassicTutorial.route)
-                        }
+                        icon = Icons.Default.School,
+                        text = context.getString(R.string.novice_title),
+                        description = context.getString(R.string.novice_content),
+                        onClick = { onDifficultySelected("Novato") }
                     )
 
                     Spacer(modifier = Modifier.Companion.height(12.dp))
 
                     CustomButton(
-                        icon = Icons.Default.Shuffle,
-                        text = context.getString(R.string.chaotic_title),
-                        description = context.getString(R.string.chaotic_content),
-                        onClick = {
-                            onDismiss()
-                            navController.navigate(Routes.ChaoticTutorial.route)
-                        }
+                        icon = Icons.Default.Equalizer,
+                        text = context.getString(R.string.intermediate_title),
+                        description = context.getString(R.string.intermediate_content),
+                        onClick = { onDifficultySelected("Intermedio") }
                     )
 
                     Spacer(modifier = Modifier.Companion.height(12.dp))
 
                     CustomButton(
-                        icon = Icons.Default.Map,
-                        text = context.getString(R.string.domination_title),
-                        description = context.getString(R.string.domination_content),
-                        onClick = {
-                            onDismiss()
-                            navController.navigate(Routes.DominationTutorial.route)
-                        }
-                    )
-
-                    Spacer(modifier = Modifier.Companion.height(12.dp))
-
-                    CustomButton(
-                        icon = Icons.Default.Block,
-                        text = context.getString(R.string.no_ties_title),
-                        description = context.getString(R.string.no_ties_content),
-                        onClick = {
-                            onDismiss()
-                            navController.navigate(Routes.NoMercyTutorial.route)
-                        }
-                    )
-
-                    Spacer(modifier = Modifier.Companion.height(12.dp))
-
-                    CustomButton(
-                        icon = Icons.Default.Timer,
-                        text = context.getString(R.string.point_race_title),
-                        description = context.getString(R.string.point_race_content),
-                        onClick = {
-                            onDismiss()
-                            navController.navigate(Routes.PointsRaceTutorial.route)
-                        }
+                        icon = Icons.Default.Star,
+                        text = context.getString(R.string.expert_title),
+                        description = context.getString(R.string.expert_content),
+                        onClick = { onDifficultySelected("Experto") }
                     )
                 }
             }

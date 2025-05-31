@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Ultimate\nTic Tac Toe</string>
+    <string name="welcome_instruction">Tap anywhere to continue</string>
     <string name="coming_soon_title">COMING SOON</string>
     <string name="coming_soon_message">This game mode is currently under development.\\nIt will be available in future updates</string>
     <string name="coming_soon_instruction">Click to continue</string>
@@ -155,4 +156,6 @@
     <string name="point_race_step6_title">End of the Game</string>
     <string name="point_race_step6_content">when time runs out thr player with most points wins\n\nEach second counts!</string>
     <string name="consent_title">Send usage data</string>
+    <string name="welcome_title">Welcome to Ultimate Tic Tac Toe!</string>
+    <string name="welcome_message">Before starting, we recommend that you review the rules of the game.  You can find them by tapping the information button in the upper right corner.</string>
 </resources>

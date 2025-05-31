@@ -1,4 +1,4 @@
-package surivz.game.supertriqui.ui.dialog
+package surivz.game.supertriqui.ui.dialogs
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -15,36 +15,35 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import surivz.game.supertriqui.R
 import surivz.game.supertriqui.ui.theme.GradientEnd
 import surivz.game.supertriqui.ui.theme.GradientStart
 
 @Composable
-fun ConsentDialog(
-    onConfirm: () -> Unit,
-    onDismiss: () -> Unit
+fun GameDialog(
+    onDismiss: () -> Unit,
+    title: String,
+    text: String,
+    confirmText: String,
+    dismissText: String? = null,
+    onConfirm: () -> Unit
 ) {
-    val context = LocalContext.current
-
     Dialog(
-        onDismissRequest = {},
+        onDismissRequest = onDismiss,
         properties = DialogProperties(
-            dismissOnBackPress = false,
-            dismissOnClickOutside = false
+            dismissOnBackPress = true,
+            dismissOnClickOutside = true
         )
     ) {
         Surface(
@@ -65,7 +64,7 @@ fun ConsentDialog(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = context.getString(R.string.consent_title),
+                    text = title,
                     style = MaterialTheme.typography.headlineSmall,
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
@@ -76,7 +75,7 @@ fun ConsentDialog(
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Text(
-                    text = context.getString(R.string.consent_content),
+                    text = text,
                     color = Color.White.copy(alpha = 0.9f),
                     textAlign = TextAlign.Center,
                     lineHeight = 24.sp,
@@ -89,22 +88,26 @@ fun ConsentDialog(
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    TextButton(
-                        onClick = onDismiss,
-                        modifier = Modifier.weight(1f),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.White.copy(alpha = 0.2f),
-                            contentColor = Color.White
-                        )
-                    ) {
-                        Text(context.getString(R.string.reject_button))
+                    if (dismissText != null) {
+                        Button(
+                            onClick = onDismiss,
+                            modifier = Modifier.weight(1f),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = Color.White.copy(alpha = 0.2f),
+                                contentColor = Color.White
+                            )
+                        ) {
+                            Text(dismissText)
+                        }
                     }
 
                     Button(
-                        onClick = onConfirm,
-                        modifier = Modifier.weight(1f)
+                        onClick = {
+                            onConfirm()
+                            onDismiss()
+                        }, modifier = Modifier.weight(1f)
                     ) {
-                        Text(context.getString(R.string.accept_button))
+                        Text(confirmText)
                     }
                 }
             }

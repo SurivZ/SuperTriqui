@@ -1,4 +1,4 @@
-package surivz.game.supertriqui.ui.dialog
+package surivz.game.supertriqui.ui.dialogs
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

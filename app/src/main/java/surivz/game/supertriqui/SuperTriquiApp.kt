@@ -12,12 +12,15 @@ import androidx.core.content.edit
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import surivz.game.supertriqui.ui.dialog.ComingSoonDialog
-import surivz.game.supertriqui.ui.dialog.ConsentDialog
+import surivz.game.supertriqui.ui.dialogs.ComingSoonDialog
+import surivz.game.supertriqui.ui.dialogs.ConsentDialog
+import surivz.game.supertriqui.ui.dialogs.RulesSelectionDialog
+import surivz.game.supertriqui.ui.dialogs.WelcomeDialog
 import surivz.game.supertriqui.ui.navigation.Routes
 import surivz.game.supertriqui.ui.screens.MainScreen
 import surivz.game.supertriqui.ui.screens.game.ChaoticGameScreen
 import surivz.game.supertriqui.ui.screens.game.ClassicGameScreen
+import surivz.game.supertriqui.ui.screens.game.DominationGameScreen
 import surivz.game.supertriqui.ui.screens.rules.ChaoticTutorialScreen
 import surivz.game.supertriqui.ui.screens.rules.ClassicTutorialScreen
 import surivz.game.supertriqui.ui.screens.rules.DominationTutorialScreen
@@ -63,13 +66,25 @@ fun ConsentManager(
 @Composable
 fun SuperTriquiApp() {
     val navController = rememberNavController()
+
+    val context = LocalContext.current
+
     var showDifficultyDialog by remember { mutableStateOf(false) }
     var showComingSoon by remember { mutableStateOf(false) }
     var currentGameMode by remember { mutableStateOf("") }
     var telemetryAllowed by remember { mutableStateOf(false) }
+    var showWelcomeDialog by remember { mutableStateOf(false) }
+    var showRulesSelection by remember { mutableStateOf(false) }
+
+    val prefs = remember { context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE) }
 
     ConsentManager { allowed ->
         telemetryAllowed = allowed
+
+        if (!prefs.getBoolean("welcome_shown", false)) {
+            showWelcomeDialog = true
+            prefs.edit { putBoolean("welcome_shown", true) }
+        }
     }
 
     NavHost(
@@ -97,6 +112,12 @@ fun SuperTriquiApp() {
                                     )
                                 ) else navController.navigate(Routes.ChaoticGame.route)
 
+                                "domination" -> if (vsAI) navController.navigate(
+                                    Routes.DominationGameVsAI.createRoute(
+                                        difficulty
+                                    )
+                                ) else navController.navigate(Routes.DominationGame.route)
+
                                 else -> showComingSoon = true
                             }
                         }
@@ -105,6 +126,23 @@ fun SuperTriquiApp() {
                 showDifficultyDialog = showDifficultyDialog,
                 onShowDifficultyDialog = { show -> showDifficultyDialog = show },
             )
+
+            if (showWelcomeDialog) {
+                WelcomeDialog(
+                    onDismiss = { showWelcomeDialog = false },
+                    onShowRules = {
+                        showWelcomeDialog = false
+                        showRulesSelection = true
+                    }
+                )
+            }
+
+            if (showRulesSelection) {
+                RulesSelectionDialog(
+                    navController = navController,
+                    onDismiss = { showRulesSelection = false }
+                )
+            }
 
             if (showComingSoon) {
                 ComingSoonDialog(
@@ -191,6 +229,27 @@ fun SuperTriquiApp() {
                     navController.navigate(Routes.MainScreen.route)
                     showComingSoon = true
                 }
+            )
+        }
+
+        composable(Routes.DominationGame.route) {
+            DominationGameScreen(
+                onBackToMain = { navController.popBackStack() },
+                telemetryAllowed = telemetryAllowed
+            )
+        }
+
+        composable(Routes.DominationGameVsAI.route) { backStackEntry ->
+            val aiLevel = backStackEntry.arguments?.getString("aiLevel") ?: "Novato"
+
+            DominationGameScreen(
+                onBackToMain = { navController.popBackStack() },
+                vsAI = true,
+                aiLevel = when (aiLevel) {
+                    "Intermedio" -> AILevel.INTERMEDIATE
+                    else -> AILevel.NOVICE
+                },
+                telemetryAllowed = telemetryAllowed
             )
         }
 

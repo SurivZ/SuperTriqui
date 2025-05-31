@@ -38,7 +38,7 @@ import surivz.game.supertriqui.ui.dialogs.GameResultDialog
 import surivz.game.supertriqui.telemetry.MoveRecord as TelemetryMoveRecord
 
 @Composable
-fun ChaoticGameScreen(
+fun DominationGameScreen(
     onBackToMain: () -> Unit,
     vsAI: Boolean = false,
     aiLevel: AILevel = AILevel.NOVICE,
@@ -56,16 +56,21 @@ fun ChaoticGameScreen(
     var showGameResultDialog by remember { mutableStateOf(false) }
     var gameResultMessage by remember { mutableStateOf("") }
 
-    var gameState by remember { mutableStateOf(ChaoticGameState()) }
+    var gameState by remember { mutableStateOf(DominationGameState()) }
     val aiPlayer by remember { mutableStateOf(AIPlayer(aiLevel)) }
     var isAITurn by remember { mutableStateOf(false) }
 
+    fun handleGameEnd() {
+        gameResultMessage = when (gameState.winner) {
+            Player.X -> context.getString(R.string.player_wins, Player.X)
+            Player.O -> context.getString(R.string.player_wins, Player.O)
+            else -> context.getString(R.string.game_tied)
+        }
 
-    fun handleGameEnd(message: String) {
-        gameResultMessage = message
         showGameResultDialog = true
         isAITurn = false
 
+        // Telemetría
         val duration = System.currentTimeMillis() - startTime
         val result = when (gameState.winner) {
             Player.X -> "X"
@@ -77,7 +82,7 @@ fun ChaoticGameScreen(
             CoroutineScope(Dispatchers.IO).launch {
                 telemetryManager.logEvent(
                     Game(
-                        mode = "chaotic",
+                        mode = "domination",
                         vsAI = vsAI,
                         aiLevel = if (vsAI) aiLevel.name else null,
                         result = result,
@@ -100,30 +105,21 @@ fun ChaoticGameScreen(
     }
 
     fun resetGame() {
-        gameState = ChaoticGameState()
+        gameState = DominationGameState()
         showGameResultDialog = false
         isAITurn = false
     }
 
     fun onCellClick(boardIndex: Int, cellIndex: Int) {
         if (gameState.isGameOver()) return
-
-        if (gameState.moveHistory.isNotEmpty() && (gameState.nextBoard != -1 && gameState.nextBoard != boardIndex)) return
+        if (gameState.nextBoard != -1 && gameState.nextBoard != boardIndex) return
         if (gameState.boards[boardIndex].isFinished()) return
 
         val newState = gameState.makeMove(boardIndex, cellIndex)
         gameState = newState
 
         if (newState.isGameOver()) {
-            handleGameEnd(
-                when {
-                    newState.winner != null -> context.getString(
-                        R.string.player_wins, newState.winner
-                    )
-
-                    else -> context.getString(R.string.game_tied)
-                }
-            )
+            handleGameEnd()
         } else if (vsAI && newState.currentPlayer == Player.O) {
             isAITurn = true
         }
@@ -140,15 +136,7 @@ fun ChaoticGameScreen(
                 gameState = newState
 
                 if (newState.isGameOver()) {
-                    handleGameEnd(
-                        when {
-                            newState.winner != null -> context.getString(
-                                R.string.player_wins, newState.winner
-                            )
-
-                            else -> context.getString(R.string.game_tied)
-                        }
-                    )
+                    handleGameEnd()
                 }
             }
             isAITurn = false
@@ -195,8 +183,9 @@ fun ChaoticGameScreen(
                         currentPlayer = gameState.currentPlayer.opponent()
                     )
                     showSurrenderDialog = false
-                    handleGameEnd(context.getString(R.string.player_wins, gameState.winner))
-                })
+                    handleGameEnd()
+                }
+            )
         }
 
         if (showDrawOfferDialog) {
@@ -208,7 +197,8 @@ fun ChaoticGameScreen(
                 onConfirm = {
                     showDrawOfferDialog = false
                     showDrawResponseDialog = true
-                })
+                }
+            )
         }
 
         if (showDrawResponseDialog) {
@@ -221,8 +211,9 @@ fun ChaoticGameScreen(
                 onConfirm = {
                     gameState = gameState.copy(winner = null)
                     showDrawResponseDialog = false
-                    handleGameEnd(context.getString(R.string.game_tied))
-                })
+                    handleGameEnd()
+                }
+            )
         }
 
         if (showGameResultDialog) {
@@ -232,58 +223,64 @@ fun ChaoticGameScreen(
                 onBackToMenu = {
                     resetGame()
                     onBackToMain()
-                })
+                }
+            )
         }
     }
 }
 
-data class ChaoticGameState(
+data class DominationGameState(
     override val boards: List<SmallBoardState> = List(9) { SmallBoardState() },
     override val currentPlayer: Player = Player.X,
     override val nextBoard: Int = -1,
     override val winner: Player? = null,
-    val moveHistory: List<MoveRecord> = emptyList()
+    val moveHistory: List<MoveRecord> = emptyList(),
+    val xBoardsWon: Int = 0,
+    val oBoardsWon: Int = 0
 ) : GameState {
+
     override fun isGameOver(): Boolean = winner != null || boards.all { it.isFinished() }
 
-    private fun checkWinner(boards: List<SmallBoardState>): Player? {
-        val bigBoard = boards.map { it.winner }
-        val winningLines = listOf(
-            listOf(0, 1, 2),
-            listOf(3, 4, 5),
-            listOf(6, 7, 8),
-            listOf(0, 3, 6),
-            listOf(1, 4, 7),
-            listOf(2, 5, 8),
-            listOf(0, 4, 8),
-            listOf(2, 4, 6)
-        )
-
-        for (line in winningLines) {
-            val (a, b, c) = line
-            if (bigBoard[a] != null && bigBoard[a] == bigBoard[b] && bigBoard[a] == bigBoard[c]) {
-                return bigBoard[a]
+    private fun calculateWinner(xWins: Int, oWins: Int): Player? {
+        return when {
+            xWins >= 5 -> Player.X
+            oWins >= 5 -> Player.O
+            boards.all { it.isFinished() } -> {
+                when {
+                    xWins > oWins -> Player.X
+                    oWins > xWins -> Player.O
+                    else -> null // Empate real
+                }
             }
+
+            else -> null // Juego aún no termina
         }
-        return null
     }
 
-    fun makeMove(boardIndex: Int, cellIndex: Int): ChaoticGameState {
+    fun makeMove(boardIndex: Int, cellIndex: Int): DominationGameState {
         if (isGameOver() || boards[boardIndex].isFinished()) return this
 
-        val newBoards = boards.toMutableList()
-        val updatedBoard = newBoards[boardIndex].makeMove(cellIndex, currentPlayer)
-        newBoards[boardIndex] = updatedBoard
+        val currentBoard = boards[boardIndex]
+        val updatedBoard = currentBoard.makeMove(cellIndex, currentPlayer)
 
-        val newWinner = checkWinner(newBoards)
+        // Determinar si este movimiento ganó un tablero
+        val didWinBoard = (updatedBoard.winner != null && currentBoard.winner == null)
+        val newXBoardsWon =
+            xBoardsWon + if (didWinBoard && updatedBoard.winner == Player.X) 1 else 0
+        val newOBoardsWon =
+            oBoardsWon + if (didWinBoard && updatedBoard.winner == Player.O) 1 else 0
 
-        val nextBoard = if (newWinner == null && !newBoards.all { it.isFinished() }) {
-            val availableBoards = newBoards.indices.filter {
-                !newBoards[it].isFinished()
-            }
-            if (availableBoards.isNotEmpty()) availableBoards.random() else -1
-        } else {
-            -1
+        // Actualizar la lista de tableros
+        val newBoards = boards.toMutableList().apply { this[boardIndex] = updatedBoard }
+
+        // Calcular el nuevo ganador
+        val newWinner = calculateWinner(newXBoardsWon, newOBoardsWon)
+
+        // Determinar el próximo tablero permitido
+        val nextBoard = when {
+            newWinner != null -> -1
+            newBoards[cellIndex].isFinished() -> -1
+            else -> cellIndex
         }
 
         return copy(
@@ -296,9 +293,11 @@ data class ChaoticGameState(
                 moveNumber = moveHistory.size + 1,
                 boardIndex = boardIndex,
                 cellIndex = cellIndex,
-                resultedInBoardWin = updatedBoard.winner != null,
+                resultedInBoardWin = didWinBoard,
                 resultedInBoardDraw = updatedBoard.isFull() && updatedBoard.winner == null
-            )
+            ),
+            xBoardsWon = newXBoardsWon,
+            oBoardsWon = newOBoardsWon
         )
     }
 }

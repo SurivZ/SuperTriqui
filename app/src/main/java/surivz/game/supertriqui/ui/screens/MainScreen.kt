@@ -40,9 +40,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import surivz.game.supertriqui.R
 import surivz.game.supertriqui.ui.components.GameBackground
-import surivz.game.supertriqui.ui.dialog.DifficultySelectionDialog
-import surivz.game.supertriqui.ui.dialog.GameModeSelectionDialog
-import surivz.game.supertriqui.ui.dialog.RulesSelectionDialog
+import surivz.game.supertriqui.ui.dialogs.DifficultySelectionDialog
+import surivz.game.supertriqui.ui.dialogs.GameModeSelectionDialog
+import surivz.game.supertriqui.ui.dialogs.RulesSelectionDialog
 
 @Composable
 fun MainScreen(

@@ -1,6 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Super Triqui</string>
 
+    <string name="welcome_title">¡Bienvenido a Super Triqui!</string>
+    <string name="welcome_message">Antes de empezar, te recomendamos revisar las reglas del juego.  Puedes encontrarlas tocando el botón de información en la esquina superior derecha.</string>
+    <string name="welcome_instruction">Toca en cualquier lugar para continuar</string>
+
     <string name="coming_soon_title">PRÓXIMAMENTE</string>
     <string name="coming_soon_message">Este modo de juego está en desarrollo.\nEstará disponible en una próxima actualización</string>
     <string name="coming_soon_instruction">Toca fuera para continuar</string>
